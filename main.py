@@ -10,6 +10,9 @@ one has ever lost a deal because their left eye blinked a millisecond
 before their right one. One sentence, 217 characters.
 
 This program writes that one-sentence pitch to /output/entry.txt.
+The pitch is validated before writing: it must be a single sentence
+of 1-240 characters, so a bad edit fails loudly instead of shipping
+an entry that breaks the competition's rules.
 """
 
 from pathlib import Path
@@ -23,6 +26,10 @@ PITCH = (
 
 
 def main() -> None:
+    # Competition rule: exactly one sentence, 1-240 characters.
+    assert 1 <= len(PITCH) <= 240, f"pitch must be 1-240 chars, got {len(PITCH)}"
+    assert PITCH.count(".") == 2, "pitch must be one sentence (one period + $9.99)"
+    assert PITCH.endswith("."), "pitch must end with a period"
     path = Path("/output/entry.txt")
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(PITCH + "\n", encoding="utf-8")

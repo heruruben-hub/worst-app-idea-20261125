@@ -8,7 +8,7 @@ An entry for [The Worst App Idea Ever Pitched](https://make.fun/competitions/u-p
 
 ## The entry
 
-`main.py` writes exactly one sentence — a pitch for the worst, most useless app imaginable — to `/output/entry.txt`:
+`main.py` writes exactly one sentence — a pitch for the worst, most useless app imaginable — to `/output/entry.txt`, and validates it first (one sentence, 1–240 characters):
 
 ```text
 BlinkSync is a $9.99/month app that synchronises your blinking across every device you own, so your eyes never blink out of sync — founded by a man who blinked 14,000 times a day and knew there had to be a better way.
